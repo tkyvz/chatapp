@@ -1,8 +1,8 @@
 # chatapp
-A simple PHP based Chat Application prototype.
+A simple PHP based Chat Application prototype. Don't use it in production environments. It is just an experimental project to learn PHP.
 
 ## Installation
-This project uses composer, so for installing dependencies just type to the terminal `php composer.phar install` in the project directory.
+This project uses composer, so for installing dependencies just type to the terminal `php composer.phar install` at the project directory. PHP's built-in web server can be used to host the application. Just type the command `php -S localhost:[port_num]` inside the *public* folder.
 
 ## Database
 The project has its database in *db* folder. Database is called chatapp.db. Three users are already inserted in the database. You may also register your own users in *signup* page.
