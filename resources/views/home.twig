@@ -1,0 +1,73 @@
+{% extends 'templates/app.twig' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="{{ base_url() }}/css/home.css">
+{% endblock %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">Chat Rooms</div>
+        <div class="panel-body" style="height: 400px; overflow-y: scroll">
+          <div class="list-group" id="chatRoomList">
+
+          </div>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <label for="newGroup" style="margin-left: 3px;">Add Group</label>
+            <input name="newGroup" type="text" placeholder="Enter Name" style="width: calc(100% - 6px); padding: 5px; margin-left: 3px; margin-bottom: 5px;" id="addGroup">
+            <button type="button" class="btn btn-default pull-right" id="addGroupButton">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default" id="chatRoomPanel" hidden>
+        <div class="panel-heading" id="chatRoomHeader"></div>
+        <div class="panel-body" style="height: 400px; overflow-y: scroll">
+          <ul class="list-group" id="chatMessages">
+          </ul>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <label for="newMessage" style="margin-left: 3px;">Message</label>
+            <input name="newMessage" type="text" placeholder="Type your message" style="width: calc(100% - 6px); padding: 5px; margin-left: 3px; margin-bottom: 5px;" id="sendMessage">
+            <button type="button" class="btn btn-default pull-right" id="sendMessageButton">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default" id="membersPanel" hidden>
+        <div class="panel-heading">Members</div>
+        <div class="panel-body" style="height: 400px; overflow-y: scroll">
+          <div class="list-group" id="chatRoomMemberList">
+
+          </div>
+        </div>
+        <div class="panel-footer" id="membersFooter" hidden>
+          <div class="row">
+            <label for="newMember" style="margin-left: 3px;">Add Member</label>
+            <input name="newMember" placeholder="Enter Name" style="width: calc(100% - 6px); padding: 5px; margin-left: 3px; margin-bottom: 5px;" id="addMember">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script
+    type="text/javascript"
+    src="{{ base_url() }}/js/home.js">
+  </script>
+  <script
+    type="text/javascript">
+    localStorage.setItem('userId', {{ authenticator.user.id }})
+  </script>
+{% endblock %}
